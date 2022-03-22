@@ -13,7 +13,7 @@ namespace obiz_load_data
 {
     public partial class Form1 : Form
     {
-        public string path = @"C:\Users\alex\Desktop\123.txt";
+        public string path = @"C:\Users\alex\Desktop\Homework\123.txt";
         public string text;
 
         public Form1()
