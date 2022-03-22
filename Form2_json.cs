@@ -1,25 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using Newtonsoft.Json;
-using System;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.IO;
+using System.Windows.Forms;
 
 namespace obiz_load_data
 {
     public partial class Form2_json : Form
     {
         public string path = @"C:\Users\alex\Desktop\Homework\users.json";
-
-        public ConfigurationDto configurationDto;
-
+        public input2Jsons input2Json;
+        public string text = "";
 
         public Form2_json()
         {
@@ -28,11 +19,11 @@ namespace obiz_load_data
         }
 
 
-        public class ConfigurationDto
+        public class input2Jsons
         {
             public string Id;
             public string Name;
-            public ConfigurationDto(string name)
+            public input2Jsons(string name)
             {
                 this.Id = DateTimeOffset.Now.ToUnixTimeSeconds().ToString();
                 this.Name = name;
@@ -43,20 +34,24 @@ namespace obiz_load_data
 
         private void Add_Text_Click(object sender, EventArgs e)
         {
-            configurationDto = new ConfigurationDto(Tb_Text.Text);
 
-            string output = JsonConvert.SerializeObject(configurationDto);
+            input2Json = new input2Jsons(Tb_Text.Text);
 
-            File.WriteAllText(@"C:\Users\alex\Desktop\Homework\users.json", output);
+            string output = JsonConvert.SerializeObject(input2Json);
+
+            File.WriteAllText(@"E:\123.json", $"[ {textBox2.Text + output} ]");
         }
 
         private void Read_json()
         {
-            FileStream fs = new FileStream(@"C:\Users\alex\Desktop\Homework\users.json", FileMode.Open, FileAccess.Read);
-            StreamReader files = new StreamReader(fs, System.Text.Encoding.Default);
-            JsonTextReader reader = new JsonTextReader(files);//解析json模組
-            JObject o = (JObject)JToken.ReadFrom(reader);
+            text = File.ReadAllText(@"E:\123.json");
 
+            JArray jsonArray = JArray.Parse(text);
+
+            for (int i = jsonArray.Count - 1; i >= 0; i--)
+            {
+                textBox2.Text += JObject.Parse(jsonArray[i].ToString()).ToString() + "," + "\r\n";
+            }
         }
 
         
