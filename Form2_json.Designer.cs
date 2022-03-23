@@ -35,10 +35,11 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(35, 146);
+            this.textBox2.Enabled = false;
+            this.textBox2.Location = new System.Drawing.Point(35, 111);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(501, 254);
+            this.textBox2.Size = new System.Drawing.Size(501, 441);
             this.textBox2.TabIndex = 5;
             // 
             // Add_Text
@@ -62,7 +63,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 450);
+            this.ClientSize = new System.Drawing.Size(570, 564);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.Add_Text);
             this.Controls.Add(this.Tb_Text);

@@ -10,7 +10,6 @@ namespace obiz_load_data
     {
         public string path = @"C:\Users\alex\Desktop\Homework\users.json";
         public input2Jsons input2Json;
-        public string text = "";
 
         public Form2_json()
         {
@@ -39,12 +38,20 @@ namespace obiz_load_data
 
             string output = JsonConvert.SerializeObject(input2Json);
 
-            File.WriteAllText(@"E:\123.json", $"[ {textBox2.Text + output} ]");
+            File.WriteAllText(path, $"[ {textBox2.Text + output} ]");
+
+            Tb_Text.Text = "";
+
+            Read_json();
         }
 
         private void Read_json()
         {
-            text = File.ReadAllText(@"E:\123.json");
+            if(textBox2.Text.Length != 0)
+            {
+                textBox2.Text = "";
+            }
+            string text = File.ReadAllText(path);
 
             JArray jsonArray = JArray.Parse(text);
 
@@ -54,6 +61,7 @@ namespace obiz_load_data
             }
         }
 
+        
         
     }
 }
