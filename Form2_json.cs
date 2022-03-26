@@ -15,6 +15,7 @@ namespace obiz_load_data
         public Form2_json()
         {
             InitializeComponent();
+            TestFile(path);
             Read_json();
         }
 
@@ -74,6 +75,22 @@ namespace obiz_load_data
             {
                 textBox2.Text += JObject.Parse(reversed[i].ToString()).ToString() + "," + "\r\n";
             }
+        }
+
+
+        private bool TestFile(string File_Path)
+        {
+            bool result = false;
+            if (System.IO.File.Exists(File_Path))
+            {
+                result = true;
+            }
+            else
+            {
+                File.Create(path);
+                File.WriteAllText(path, "[]");
+            }
+            return result;
         }
     }
 }
