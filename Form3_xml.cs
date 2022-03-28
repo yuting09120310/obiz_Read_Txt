@@ -13,7 +13,7 @@ namespace obiz_load_data
 {
     public partial class Form3_xml : Form
     {
-        string path = @"E:\123.xml";
+        string Path = @"E:\123.xml";
         public Form3_xml()
         {
             InitializeComponent();
@@ -23,7 +23,7 @@ namespace obiz_load_data
         public void Read_Xml()
         {
             XmlDocument myXml = new XmlDocument();
-            myXml.Load(path);
+            myXml.Load(Path);
             XmlNode user_info = myXml.DocumentElement;//讀取XML的根節點
             foreach (XmlNode node in user_info.ChildNodes)//對子節點進行迴圈
             {

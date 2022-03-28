@@ -9,13 +9,14 @@ namespace obiz_load_data
 {
     public partial class Form2_json : Form
     {
-        public string path = @"E:\123.json";
+        public string Path = @"C:\Users\alex\Desktop\Homework\Form_json.json";
         public input2Jsons input2Json;
+        Check_File CF = new Check_File();
 
         public Form2_json()
         {
             InitializeComponent();
-            TestFile(path);
+            CF.Files_Exist(Path,"JSon");
             Read_json();
         }
 
@@ -42,7 +43,7 @@ namespace obiz_load_data
             string output = JsonConvert.SerializeObject(input2Json);
 
             //覆蓋所有資料 tb內容 + 序列化資料
-            File.WriteAllText(path, $"[ {textBox2.Text + output} ]");
+            File.WriteAllText(Path, $"[ {textBox2.Text + output} ]");
 
             //將資料清空
             Tb_Text.Text = "";
@@ -58,7 +59,7 @@ namespace obiz_load_data
             {
                 textBox2.Text = "";
             }
-            string text = File.ReadAllText(path);
+            string text = File.ReadAllText(Path);
 
             JArray jsonArray = JArray.Parse(text);
 
@@ -78,19 +79,6 @@ namespace obiz_load_data
         }
 
 
-        private bool TestFile(string File_Path)
-        {
-            bool result = false;
-            if (System.IO.File.Exists(File_Path))
-            {
-                result = true;
-            }
-            else
-            {
-                File.Create(path);
-                File.WriteAllText(path, "[]");
-            }
-            return result;
-        }
+        
     }
 }
