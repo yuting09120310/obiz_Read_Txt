@@ -41,10 +41,13 @@ namespace obiz_load_data
         {
             try
             {
-                string[] new_string = { Tb_Text.Text, text };
-                File.WriteAllLines(Path, new_string);
-                ReadText();
-                Clear();
+                if(Tb_Text.Text.Length != 0)
+                {
+                    string[] new_string = { Tb_Text.Text, text };
+                    File.WriteAllLines(Path, new_string);
+                    ReadText();
+                    Clear();
+                }
             }catch(Exception ex)
             {
                 msg_Log.save_log(AppName, ex);
