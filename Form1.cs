@@ -15,27 +15,40 @@ namespace obiz_load_data
     {
         public string Path = @"C:\Users\alex\Desktop\Homework\Form_txt.txt";
         public string text;
-        Check_File CF = new Check_File();
+        string AppName = "Form1";
+        Msg_log msg_Log = new Msg_log();
 
         public Form1()
         {
             InitializeComponent();
-            CF.Files_Exist(Path, "txt");
+            msg_Log.Files_Exist(Path, "txt");
             ReadText();
         }
 
         public void ReadText()
         {
-            text = File.ReadAllText(Path);
-            textBox2.Text = text;
+            try
+            {
+                text = File.ReadAllText(Path);
+                textBox2.Text = text;
+            }catch(Exception ex)
+            {
+                msg_Log.save_log(AppName, ex);
+            }
         }
 
         private void Add_Text_Click(object sender, EventArgs e)
         {
-            string[] new_string = { Tb_Text.Text , text };
-            File.WriteAllLines(Path, new_string);
-            ReadText();
-            Clear();
+            try
+            {
+                string[] new_string = { Tb_Text.Text, text };
+                File.WriteAllLines(Path, new_string);
+                ReadText();
+                Clear();
+            }catch(Exception ex)
+            {
+                msg_Log.save_log(AppName, ex);
+            }
         }
 
         public void Clear()

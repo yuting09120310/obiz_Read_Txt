@@ -68,6 +68,7 @@
     <Compile Include="Form3_xml.Designer.cs">
       <DependentUpon>Form3_xml.cs</DependentUpon>
     </Compile>
+    <Compile Include="lib\Msg_log.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

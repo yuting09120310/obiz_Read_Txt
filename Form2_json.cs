@@ -11,12 +11,13 @@ namespace obiz_load_data
     {
         public string Path = @"C:\Users\alex\Desktop\Homework\Form_json.json";
         public input2Jsons input2Json;
-        Check_File CF = new Check_File();
+        Msg_log msg_Log = new Msg_log();
+        string AppName = "Form2_json";
 
         public Form2_json()
         {
             InitializeComponent();
-            CF.Files_Exist(Path,"JSon");
+            msg_Log.Files_Exist(Path,"JSon");
             Read_json();
         }
 
@@ -36,45 +37,59 @@ namespace obiz_load_data
         //新增資料事件
         private void Add_Text_Click(object sender, EventArgs e)
         {
-            //建立一個新的物件
-            input2Json = new input2Jsons(Tb_Text.Text);
+            try
+            {
+                //建立一個新的物件
+                input2Json = new input2Jsons(Tb_Text.Text);
 
-            //將資料序列化
-            string output = JsonConvert.SerializeObject(input2Json);
+                //將資料序列化
+                string output = JsonConvert.SerializeObject(input2Json);
 
-            //覆蓋所有資料 tb內容 + 序列化資料
-            File.WriteAllText(Path, $"[ {textBox2.Text + output} ]");
+                //覆蓋所有資料 tb內容 + 序列化資料
+                File.WriteAllText(Path, $"[ {textBox2.Text + output} ]");
 
-            //將資料清空
-            Tb_Text.Text = "";
+                //將資料清空
+                Tb_Text.Text = "";
 
-            //讀取
-            Read_json();
+                //讀取
+                Read_json();
+            }
+            catch(Exception ex)
+            {
+                msg_Log.save_log(AppName, ex);
+            }
         }
 
         private void Read_json()
         {
-            //清空內容
-            if(textBox2.Text.Length != 0)
+            try
             {
-                textBox2.Text = "";
+                //清空內容
+                if (textBox2.Text.Length != 0)
+                {
+                    textBox2.Text = "";
+                }
+                string text = File.ReadAllText(Path);
+
+                JArray jsonArray = JArray.Parse(text);
+
+
+                //反轉陣列
+                JArray reversed = new JArray();
+                foreach (var tok in jsonArray.Reverse())
+                {
+                    reversed.Add(tok);
+                }
+
+                //將資料逐筆寫入textbox
+                for (int i = 0; i <= reversed.Count - 1; i++)
+                {
+                    textBox2.Text += JObject.Parse(reversed[i].ToString()).ToString() + "," + "\r\n";
+                }
             }
-            string text = File.ReadAllText(Path);
-
-            JArray jsonArray = JArray.Parse(text);
-
-
-            //反轉陣列
-            JArray reversed = new JArray();
-            foreach (var tok in jsonArray.Reverse())
+            catch(Exception ex)
             {
-                reversed.Add(tok);
-            }
-
-            //將資料逐筆寫入textbox
-            for (int i = 0; i <= reversed.Count - 1; i++)
-            {
-                textBox2.Text += JObject.Parse(reversed[i].ToString()).ToString() + "," + "\r\n";
+                msg_Log.save_log(AppName, ex);
             }
         }
 

@@ -31,6 +31,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.Add_Text = new System.Windows.Forms.Button();
             this.Tb_Text = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // textBox2
@@ -44,25 +45,35 @@
             // 
             // Add_Text
             // 
-            this.Add_Text.Location = new System.Drawing.Point(384, 45);
+            this.Add_Text.Location = new System.Drawing.Point(377, 32);
             this.Add_Text.Name = "Add_Text";
-            this.Add_Text.Size = new System.Drawing.Size(75, 23);
+            this.Add_Text.Size = new System.Drawing.Size(88, 48);
             this.Add_Text.TabIndex = 7;
             this.Add_Text.Text = "新增";
             this.Add_Text.UseVisualStyleBackColor = true;
+            this.Add_Text.Click += new System.EventHandler(this.Add_Text_Click);
             // 
             // Tb_Text
             // 
-            this.Tb_Text.Location = new System.Drawing.Point(98, 45);
+            this.Tb_Text.Location = new System.Drawing.Point(101, 32);
             this.Tb_Text.Name = "Tb_Text";
             this.Tb_Text.Size = new System.Drawing.Size(259, 22);
             this.Tb_Text.TabIndex = 6;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(161, 60);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(143, 20);
+            this.comboBox1.TabIndex = 9;
             // 
             // Form3_xml
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 568);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.Add_Text);
             this.Controls.Add(this.Tb_Text);
@@ -78,5 +89,6 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button Add_Text;
         private System.Windows.Forms.TextBox Tb_Text;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
