@@ -22,31 +22,31 @@ namespace obiz_load_data
         {
             InitializeComponent();
             msg_Log.Files_Exist(Path, "txt");
-            ReadText();
+            read_text();
         }
 
-        public void ReadText()
+        public void read_text()
         {
             try
             {
                 text = File.ReadAllText(Path);
-                textBox2.Text = text;
+                txtShow.Text = text;
             }catch(Exception ex)
             {
                 msg_Log.save_log(AppName, ex);
             }
         }
 
-        private void Add_Text_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if(Tb_Text.Text.Length != 0)
+                if(txtName.Text.Length != 0)
                 {
-                    string[] new_string = { Tb_Text.Text, text };
+                    string[] new_string = { txtName.Text, text };
                     File.WriteAllLines(Path, new_string);
-                    ReadText();
-                    Clear();
+                    read_text();
+                    clear();
                 }
             }catch(Exception ex)
             {
@@ -54,9 +54,9 @@ namespace obiz_load_data
             }
         }
 
-        public void Clear()
+        public void clear()
         {
-            Tb_Text.Text = "";
+            txtName.Text = "";
         }
     }
 }

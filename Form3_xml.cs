@@ -21,16 +21,16 @@ namespace obiz_load_data
         {
             InitializeComponent();
             setup();
-            Read_Xml();
+            read_xml();
         }
 
         void setup()
         {
-            comboBox1.Items.Add("USA");
-            comboBox1.Items.Add("ROC");
+            cboArea.Items.Add("USA");
+            cboArea.Items.Add("ROC");
         }
 
-        public void Read_Xml()
+        public void read_xml()
         {
             try
             {
@@ -49,15 +49,15 @@ namespace obiz_load_data
                             switch (item.Name)
                             {
                                 case "Name":
-                                    textBox2.Text += ($"姓名：{item.InnerText}" + Environment.NewLine);
+                                    txtShow.Text += ($"姓名：{item.InnerText}" + Environment.NewLine);
                                     break;
 
                                 case "Country":
-                                    textBox2.Text += ($"國家：{item.InnerText}" + Environment.NewLine);
+                                    txtShow.Text += ($"國家：{item.InnerText}" + Environment.NewLine);
                                     break;
                             }
                         }
-                        textBox2.Text += Environment.NewLine;
+                        txtShow.Text += Environment.NewLine;
                     }
                 }
 
@@ -68,11 +68,11 @@ namespace obiz_load_data
             }
         }
 
-        private void Add_Text_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                textBox2.Text = "";
+                txtShow.Text = "";
 
                 XmlDocument myXml = new XmlDocument();
                 myXml.Load(Path);
@@ -85,15 +85,15 @@ namespace obiz_load_data
 
                 //建立小節點 名字 國家
                 XmlElement name = myXml.CreateElement("Name");
-                name.InnerText = Tb_Text.Text;
+                name.InnerText = txtName.Text;
                 main.AppendChild(name);
                 XmlElement country = myXml.CreateElement("Country");
-                country.InnerText = comboBox1.Text;
+                country.InnerText = cboArea.Text;
                 main.AppendChild(country);
 
                 myXml.Save(Path);
 
-                Read_Xml();
+                read_xml();
             }catch(Exception ex)
             {
                msg_log.save_log(AppName, ex);

@@ -28,44 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Tb_Text = new System.Windows.Forms.TextBox();
-            this.Add_Text = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtShow = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // Tb_Text
+            // txtName
             // 
-            this.Tb_Text.Location = new System.Drawing.Point(136, 43);
-            this.Tb_Text.Name = "Tb_Text";
-            this.Tb_Text.Size = new System.Drawing.Size(259, 22);
-            this.Tb_Text.TabIndex = 0;
+            this.txtName.Location = new System.Drawing.Point(136, 43);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(259, 22);
+            this.txtName.TabIndex = 0;
             // 
-            // Add_Text
+            // btnAdd
             // 
-            this.Add_Text.Location = new System.Drawing.Point(422, 43);
-            this.Add_Text.Name = "Add_Text";
-            this.Add_Text.Size = new System.Drawing.Size(75, 23);
-            this.Add_Text.TabIndex = 1;
-            this.Add_Text.Text = "新增";
-            this.Add_Text.UseVisualStyleBackColor = true;
-            this.Add_Text.Click += new System.EventHandler(this.Add_Text_Click);
+            this.btnAdd.Location = new System.Drawing.Point(422, 43);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "新增";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // textBox2
+            // txtShow
             // 
-            this.textBox2.Location = new System.Drawing.Point(56, 138);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(501, 254);
-            this.textBox2.TabIndex = 2;
+            this.txtShow.Location = new System.Drawing.Point(56, 138);
+            this.txtShow.Multiline = true;
+            this.txtShow.Name = "txtShow";
+            this.txtShow.Size = new System.Drawing.Size(501, 254);
+            this.txtShow.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 437);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.Add_Text);
-            this.Controls.Add(this.Tb_Text);
+            this.Controls.Add(this.txtShow);
+            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.txtName);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -75,9 +75,9 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox Tb_Text;
-        private System.Windows.Forms.Button Add_Text;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtShow;
     }
 }
 

@@ -18,7 +18,7 @@ namespace obiz_load_data
         {
             InitializeComponent();
             msg_Log.Files_Exist(Path,"JSon");
-            Read_json();
+            read_json();
         }
 
 
@@ -35,24 +35,24 @@ namespace obiz_load_data
 
 
         //新增資料事件
-        private void Add_Text_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
                 //建立一個新的物件
-                input2Json = new input2Jsons(Tb_Text.Text);
+                input2Json = new input2Jsons(txtName.Text);
 
                 //將資料序列化
                 string output = JsonConvert.SerializeObject(input2Json);
 
                 //覆蓋所有資料 tb內容 + 序列化資料
-                File.WriteAllText(Path, $"[ {textBox2.Text + output} ]");
+                File.WriteAllText(Path, $"[ {txtShow.Text + output} ]");
 
                 //將資料清空
-                Tb_Text.Text = "";
+                txtName.Text = "";
 
                 //讀取
-                Read_json();
+                read_json();
             }
             catch(Exception ex)
             {
@@ -60,14 +60,14 @@ namespace obiz_load_data
             }
         }
 
-        private void Read_json()
+        private void read_json()
         {
             try
             {
                 //清空內容
-                if (textBox2.Text.Length != 0)
+                if (txtShow.Text.Length != 0)
                 {
-                    textBox2.Text = "";
+                    txtShow.Text = "";
                 }
                 string text = File.ReadAllText(Path);
 
@@ -84,7 +84,7 @@ namespace obiz_load_data
                 //將資料逐筆寫入textbox
                 for (int i = 0; i <= reversed.Count - 1; i++)
                 {
-                    textBox2.Text += JObject.Parse(reversed[i].ToString()).ToString() + "," + "\r\n";
+                    txtShow.Text += JObject.Parse(reversed[i].ToString()).ToString() + "," + "\r\n";
                 }
             }
             catch(Exception ex)
